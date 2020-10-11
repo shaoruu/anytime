@@ -1,3 +1,3 @@
-export const setChromeValue = (object, callback = () => { }) => {
-  chrome.storage.sync.set(object, callback)
+export const setChromeValue = (object, callback = () => {}) => {
+	chrome.storage.sync.set(object, callback)
 }

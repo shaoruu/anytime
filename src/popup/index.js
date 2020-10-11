@@ -10,78 +10,77 @@ import { TimeContext } from './shared'
 const userTimeZone = jstz.determine().name()
 
 const theme = createMuiTheme({
-  typography: {
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      'Verdana',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
-    ].join(','),
-    fontSize: 12
-  },
-  palette: {
-    primary: {
-      light: '#484f93',
-      main: '#1B2378',
-      dark: '#121854',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#d2a0f4',
-      main: '#C789F2',
-      dark: '#8b5fa9',
-      contrastText: '#000',
-    },
-  },
+	typography: {
+		// Use the system font instead of the default Roboto font.
+		fontFamily: [
+			'Verdana',
+			'-apple-system',
+			'BlinkMacSystemFont',
+			'"Segoe UI"',
+			'Roboto',
+			'"Helvetica Neue"',
+			'Arial',
+			'sans-serif',
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"'
+		].join(','),
+		fontSize: 12
+	},
+	palette: {
+		primary: {
+			light: '#484f93',
+			main: '#1B2378',
+			dark: '#121854',
+			contrastText: '#fff'
+		},
+		secondary: {
+			light: '#d2a0f4',
+			main: '#C789F2',
+			dark: '#8b5fa9',
+			contrastText: '#000'
+		}
+	}
 })
 
 const Root = () => {
-  const [time, setTime] = useState(null)
-  const [timeZoneFrom, setTimeZoneFrom] = useState('')
-  const [timeZoneTo, setTimeZoneTo] = useState(userTimeZone)
+	const [time, setTime] = useState(null)
+	const [timeZoneFrom, setTimeZoneFrom] = useState('')
+	const [timeZoneTo, setTimeZoneTo] = useState(userTimeZone)
 
-  useEffect(() => {
-    const syncChrome = async () => {
-      const storage = await getChromeValues(['time'])
-      const { time: timeStorage } = storage
-      if (timeStorage) {
-        const timeMoment = new Date(timeStorage)
-        setTime(timeMoment)
-      }
-      setChromeValue({ time: '' })
-    }
+	useEffect(() => {
+		const syncChrome = async () => {
+			const storage = await getChromeValues(['time'])
+			const { time: timeStorage } = storage
+			if (timeStorage) {
+				setTime(timeStorage)
+			}
+			setChromeValue({ time: '' })
+		}
 
-    syncChrome()
-  }, [])
+		syncChrome()
+	}, [])
 
-  return (
-    <MuiThemeProvider theme={theme}>
-      <TimeContext.Provider
-        value={{
-          time,
-          setTime,
-          timeZoneTo,
-          setTimeZoneTo,
-          timeZoneFrom,
-          setTimeZoneFrom
-        }}
-      >
-        <App />
-      </TimeContext.Provider>
-    </MuiThemeProvider>
-  )
+	return (
+		<MuiThemeProvider theme={theme}>
+			<TimeContext.Provider
+				value={{
+					time,
+					setTime,
+					timeZoneTo,
+					setTimeZoneTo,
+					timeZoneFrom,
+					setTimeZoneFrom
+				}}
+			>
+				<App />
+			</TimeContext.Provider>
+		</MuiThemeProvider>
+	)
 }
 
 function render() {
-  ReactDOM.render(<Root />, document.getElementById('root'))
+	ReactDOM.render(<Root />, document.getElementById('root'))
 }
 
 render()

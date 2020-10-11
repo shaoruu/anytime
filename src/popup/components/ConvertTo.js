@@ -16,7 +16,11 @@ const ConvertTo = () => {
 		<SectionCard>
 			<SectionTitle>Convert to</SectionTitle>
 			<SelectorWrapper>
-				<TimeZoneSelector placeholder="Choose Time Zone to Convert to" storageKey="timeZoneTo" setTimeZone={setTimeZoneTo} />
+				<TimeZoneSelector
+					placeholder="Choose Time Zone to Convert to"
+					storageKey="timeZoneTo"
+					setTimeZone={setTimeZoneTo}
+				/>
 			</SelectorWrapper>
 		</SectionCard>
 	)

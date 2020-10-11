@@ -34,29 +34,29 @@ paths.publicUrl = paths.appBuild + '/'
 
 // Add the webpack-extension-reloader plugin to the Webpack config.
 // It notifies and reloads the extension on code changes.
-// config.plugins.push(
-//   new ExtensionReloader({
-//     entries: {
-//       contentScript: 'content',
-//       background: 'background',
-//       popup: 'popup'
-//     }
-//   })
-// )
+config.plugins.push(
+	new ExtensionReloader({
+		entries: {
+			contentScript: 'content',
+			background: 'background',
+			popup: 'popup'
+		}
+	})
+)
 
 // Start Webpack in watch mode.
 webpack(config).watch({}, function (err) {
-  if (err) {
-    console.error(err)
-  } else {
-    // Every time Webpack finishes recompiling copy all the assets of the
-    // "public" dir in the "build" dir (except for the index.html)
-    fs.copySync(paths.appPublic, paths.appBuild, {
-      dereference: true,
-      filter: (file) => file !== paths.appHtml
-    })
-    // Report on console the succesfull build
-    console.info(colors.green('Compiled successfully!'))
-    console.info('Built at', new Date().toLocaleTimeString())
-  }
+	if (err) {
+		console.error(err)
+	} else {
+		// Every time Webpack finishes recompiling copy all the assets of the
+		// "public" dir in the "build" dir (except for the index.html)
+		fs.copySync(paths.appPublic, paths.appBuild, {
+			dereference: true,
+			filter: (file) => file !== paths.appHtml
+		})
+		// Report on console the succesfull build
+		console.info(colors.green('Compiled successfully!'))
+		console.info('Built at', new Date().toLocaleTimeString())
+	}
 })
