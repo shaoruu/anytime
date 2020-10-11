@@ -27,12 +27,26 @@ const theme = createMuiTheme({
       '"Segoe UI Symbol"'
     ].join(','),
     fontSize: 12
-  }
+  },
+  palette: {
+    primary: {
+      light: '#484f93',
+      main: '#1B2378',
+      dark: '#121854',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#d2a0f4',
+      main: '#C789F2',
+      dark: '#8b5fa9',
+      contrastText: '#000',
+    },
+  },
 })
 
 const Root = () => {
-  const [time, setTime] = useState(new Date())
-  const [timeZoneFrom, setTimeZoneFrom] = useState(userTimeZone)
+  const [time, setTime] = useState(null)
+  const [timeZoneFrom, setTimeZoneFrom] = useState('')
   const [timeZoneTo, setTimeZoneTo] = useState(userTimeZone)
 
   useEffect(() => {

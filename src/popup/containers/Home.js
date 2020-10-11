@@ -12,9 +12,6 @@ const HomeWrapper = styled.div`
   margin-top: 53px;
 `
 
-
-
-
 export default () => {
   return (
     <HomeWrapper>

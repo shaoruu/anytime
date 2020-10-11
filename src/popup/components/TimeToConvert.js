@@ -1,5 +1,4 @@
 import InputAdornment from '@material-ui/core/InputAdornment'
-import Typography from '@material-ui/core/Typography'
 import DateRangeIcon from '@material-ui/icons/DateRange'
 import {
   DatePicker,
@@ -9,20 +8,8 @@ import {
 import 'date-fns'
 import React from 'react'
 import styled from 'styled-components'
-import { useTimeContext } from '../shared'
+import { SectionCard, SectionTitle, useTimeContext } from '../shared'
 import TimeZoneSelector from './TimeZoneSelector'
-
-const Wrapper = styled.div`
-	display: flex;
-	width: 364px;
-  margin: 19px;
-  padding: 16px 18px;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	background: #f7f9fc;
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-`
 
 const FormWrapper = styled.div`
 	display: flex;
@@ -33,11 +20,11 @@ const FormWrapper = styled.div`
 `
 
 const TimeToConvert = () => {
-  const { time, setTime, setTimeZone } = useTimeContext()
+  const { time, setTime, setTimeZoneFrom } = useTimeContext()
 
   return (
-    <Wrapper>
-      <Typography>Time to Convert</Typography>
+    <SectionCard style={{ marginTop: 19 }}>
+      <SectionTitle>Time to Convert</SectionTitle>
       <FormWrapper>
         <MuiPickersUtilsProvider
           utils={require('@date-io/date-fns').default}
@@ -50,9 +37,12 @@ const TimeToConvert = () => {
             margin="dense"
             format="MM/dd/yyyy"
             InputProps={{
+              placeholder: 'Select Date',
               endAdornment: (
                 <InputAdornment position="end">
-                  <DateRangeIcon style={{ color: '#C4C4C4' }} />
+                  <DateRangeIcon
+                    style={{ color: '#C4C4C4' }}
+                  />
                 </InputAdornment>
               )
             }}
@@ -65,17 +55,20 @@ const TimeToConvert = () => {
             margin="dense"
             style={{ marginLeft: 5 }}
             InputProps={{
+              placeholder: 'Select Time',
               endAdornment: (
                 <InputAdornment position="end">
-                  <DateRangeIcon style={{ color: '#C4C4C4' }} />
+                  <DateRangeIcon
+                    style={{ color: '#C4C4C4' }}
+                  />
                 </InputAdornment>
               )
             }}
           />
         </MuiPickersUtilsProvider>
       </FormWrapper>
-      <TimeZoneSelector setTimeZone={setTimeZone} />
-    </Wrapper>
+      <TimeZoneSelector setTimeZone={setTimeZoneFrom} shouldEmpty />
+    </SectionCard>
   )
 }
 

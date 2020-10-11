@@ -34,10 +34,11 @@ const filterOptions = createFilterOptions({
   limit: 20
 })
 
-const TimeZoneSelector = ({ setTimeZone }) => {
-  const [value, setValue] = useState(timeZoneDict[userTimeZone])
-  const [inputValue, setInputValue] = useState('')
+const defaultTimeZone = timeZoneDict[userTimeZone]
 
+const TimeZoneSelector = ({ setTimeZone, shouldEmpty }) => {
+  const [value, setValue] = useState(shouldEmpty ? {} : defaultTimeZone)
+  const [inputValue, setInputValue] = useState('')
 
   return (
     <Autocomplete
@@ -49,14 +50,19 @@ const TimeZoneSelector = ({ setTimeZone }) => {
       value={value}
       onChange={(_, newValue) => {
         setValue(newValue);
+        if (newValue)
+          setTimeZone(newValue.timeZone)
+        else
+          setTimeZone(null)
       }}
       inputValue={inputValue}
-      onInputChange={(_, newInputValue) => {
-        setInputValue(newInputValue);
-      }}
+      onInputChange={(_, newInputValue) =>
+        setInputValue(newInputValue)
+      }
       renderInput={(params) => (
         <TextField
           {...params}
+          placeholder="Choose Time Zone or City"
           margin="dense"
           variant="outlined"
           style={{ marginTop: 0, marginBottom: 0 }}
