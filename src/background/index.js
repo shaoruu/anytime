@@ -14,7 +14,7 @@ chrome.browserAction.onClicked.addListener(function () {
 })
 
 chrome.contextMenus.create({
-  title: 'Anytime — Convert Time',
+  title: 'AnyTime — Convert Time',
   contexts: ['selection'],
   onclick: function (info, tab) {
     const { selectionText } = info

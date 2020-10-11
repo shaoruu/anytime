@@ -34,15 +34,15 @@ paths.publicUrl = paths.appBuild + '/'
 
 // Add the webpack-extension-reloader plugin to the Webpack config.
 // It notifies and reloads the extension on code changes.
-config.plugins.push(
-  new ExtensionReloader({
-    entries: {
-      contentScript: 'content',
-      background: 'background',
-      popup: 'popup'
-    }
-  })
-)
+// config.plugins.push(
+//   new ExtensionReloader({
+//     entries: {
+//       contentScript: 'content',
+//       background: 'background',
+//       popup: 'popup'
+//     }
+//   })
+// )
 
 // Start Webpack in watch mode.
 webpack(config).watch({}, function (err) {

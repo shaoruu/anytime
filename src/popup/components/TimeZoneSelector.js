@@ -39,7 +39,7 @@ const defaultTimeZone = timeZoneDict[userTimeZone]
 
 shuffle(timeZoneLookupsArray)
 
-const TimeZoneSelector = ({ storageKey, setTimeZone, shouldEmpty }) => {
+const TimeZoneSelector = ({ storageKey, setTimeZone, shouldEmpty, placeholder }) => {
   const [value, setValue] = useState(shouldEmpty ? null : defaultTimeZone)
   const [inputValue, setInputValue] = useState('')
 
@@ -64,6 +64,7 @@ const TimeZoneSelector = ({ storageKey, setTimeZone, shouldEmpty }) => {
   return (
     <Autocomplete
       fullWidth
+      freeSolo
       id="combo-box-demo"
       filterOptions={filterOptions}
       options={timeZoneLookupsArray}
@@ -86,7 +87,7 @@ const TimeZoneSelector = ({ storageKey, setTimeZone, shouldEmpty }) => {
       renderInput={(params) => (
         <TextField
           {...params}
-          placeholder="Choose Time Zone or City"
+          placeholder={placeholder}
           margin="dense"
           variant="outlined"
           style={{ marginTop: 0, marginBottom: 0 }}

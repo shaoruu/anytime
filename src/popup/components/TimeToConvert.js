@@ -34,8 +34,10 @@ const TimeToConvert = () => {
             value={time}
             onChange={setTime}
             animateYearScrolling
+            showTodayButton
             margin="dense"
             format="MM/dd/yyyy"
+            clearable
             InputProps={{
               placeholder: 'Select Date',
               endAdornment: (
@@ -51,6 +53,8 @@ const TimeToConvert = () => {
             clearable
             inputVariant="outlined"
             value={time}
+            showTodayButton
+            todayLabel="Now"
             onChange={setTime}
             margin="dense"
             style={{ marginLeft: 5 }}
@@ -67,7 +71,7 @@ const TimeToConvert = () => {
           />
         </MuiPickersUtilsProvider>
       </FormWrapper>
-      <TimeZoneSelector storageKey="timeZoneFrom" setTimeZone={setTimeZoneFrom} shouldEmpty />
+      <TimeZoneSelector placeholder="Choose Time Zone to Convert from" storageKey="timeZoneFrom" setTimeZone={setTimeZoneFrom} shouldEmpty />
     </SectionCard>
   )
 }

@@ -40,13 +40,15 @@ const TIME_QUOTES = [
   }
 ]
 
+const randomQuote = TIME_QUOTES[Math.floor(Math.random() * TIME_QUOTES.length)]
+
 const ResultsWrapper = styled.div`
 	width: 100%;
 	margin-top: 10px;
 	padding: 8px;
-  border-radius: 3px;
-  font-weight: 500;
-  color: #ffffff;
+	border-radius: 3px;
+	font-weight: 500;
+	color: #ffffff;
 `
 
 const ImageWrapper = styled.div`
@@ -97,14 +99,24 @@ const ConvertedTime = ({ theme }) => {
     return (
       <SectionCard>
         <SectionTitle>Converted Time</SectionTitle>
-        <ResultsWrapper style={{ background: theme.palette.primary.main }}>{output}</ResultsWrapper>
+        <ResultsWrapper
+          style={{ background: theme.palette.primary.main }}
+        >
+          {output}
+        </ResultsWrapper>
         <AddToCalendarWrapper>
           <Button
             style={{
               textTransform: 'none'
             }}
-            startIcon={<CalendarTodayIcon style={{ color: theme.palette.primary.main }} />}
-            onClick={() => setAddCalendar(!addCalendar)}
+            startIcon={
+              <CalendarTodayIcon
+                style={{ color: theme.palette.primary.main }}
+              />
+            }
+            onClick={() => {
+              setAddCalendar(!addCalendar)
+            }}
           >
             Add to Calendar
 					</Button>
@@ -131,14 +143,18 @@ const ConvertedTime = ({ theme }) => {
     )
   }
 
-  const randomQuote = TIME_QUOTES[Math.floor(Math.random() * TIME_QUOTES.length)]
-
   return (
     <SectionCard>
       <SectionTitle>Converted Time</SectionTitle>
       <ImageWrapper>
         <img src={getChromeUrl(TimeIsLonelyPNG)} alt="time is lonely" />
-        <Typography style={{ color: '#828282', fontSize: 14, textAlign: 'center' }}>
+        <Typography
+          style={{
+            color: '#828282',
+            fontSize: 14,
+            textAlign: 'center'
+          }}
+        >
           “{randomQuote.quote}”
 				</Typography>
         <Typography style={{ color: '#BDBDBD', fontSize: 14 }}>
