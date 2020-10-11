@@ -1,5 +1,4 @@
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import 'antd/dist/antd.css'
 import jstz from 'jstz'
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
