@@ -1,6 +1,6 @@
 import InputAdornment from '@material-ui/core/InputAdornment'
 import Typography from '@material-ui/core/Typography'
-import TodayIcon from '@material-ui/icons/Today'
+import DateRangeIcon from '@material-ui/icons/DateRange'
 import {
   DatePicker,
   MuiPickersUtilsProvider,
@@ -52,7 +52,7 @@ const TimeToConvert = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <TodayIcon style={{ color: '#C4C4C4' }} />
+                  <DateRangeIcon style={{ color: '#C4C4C4' }} />
                 </InputAdornment>
               )
             }}
@@ -67,7 +67,7 @@ const TimeToConvert = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <TodayIcon style={{ color: '#C4C4C4' }} />
+                  <DateRangeIcon style={{ color: '#C4C4C4' }} />
                 </InputAdornment>
               )
             }}

@@ -10,6 +10,10 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: absolute;
+  top: 0;
+  background: #fff;
+  z-index: 1200;
 `
 
 const TitleWrapper = styled.div`

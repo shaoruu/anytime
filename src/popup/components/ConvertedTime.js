@@ -1,9 +1,16 @@
+import Button from '@material-ui/core/Button'
+import Collapse from '@material-ui/core/Collapse'
 import Typography from '@material-ui/core/Typography'
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
 import 'date-fns'
 import { formatToTimeZone, parseFromTimeZone } from 'date-fns-timezone'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useTimeContext } from '../shared'
+import Apple from './CalendarButtons/Apple'
+import Google from './CalendarButtons/Google'
+import Outlook from './CalendarButtons/Outlook'
+import Yahoo from './CalendarButtons/Yahoo'
 
 const Wrapper = styled.div`
 	display: flex;
@@ -20,21 +27,59 @@ const Wrapper = styled.div`
 
 const ResultsWrapper = styled.div`
 	width: 100%;
-	padding-top: 10px;
+	margin-top: 10px;
+	padding: 8px;
+	background: #e0e0e0;
+	border-radius: 3px;
+`
+
+const AddToCalendarWrapper = styled.div`
+	margin-top: 10px;
+`
+
+
+const CalendarRow = styled.div`
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 4px;
 `
 
 const ConvertedTime = () => {
   const { time, timeZoneFrom, timeZoneTo } = useTimeContext()
+  const [addCalendar, setAddCalendar] = useState(false)
 
   const utcDate = parseFromTimeZone(time, { timeZone: timeZoneFrom })
-  const output = formatToTimeZone(utcDate, 'M/D/YYYY HH:mm:ssA', {
+  const output = formatToTimeZone(utcDate, 'M/D/YYYY HH:mm:ssA dddd', {
     timeZone: timeZoneTo
   })
 
   return (
     <Wrapper>
-      <Typography>Convert to</Typography>
+      <Typography>Converted Time</Typography>
       <ResultsWrapper>{output}</ResultsWrapper>
+      <AddToCalendarWrapper>
+        <Button
+          style={{
+            textTransform: 'none'
+          }}
+          startIcon={<CalendarTodayIcon />}
+          onClick={() => setAddCalendar(!addCalendar)}
+        >
+          Add to Calendar
+				</Button>
+        <Collapse in={addCalendar}>
+          <CalendarRow>
+            <Apple />
+            <Google />
+          </CalendarRow>
+          <CalendarRow>
+            <Yahoo />
+            <Outlook />
+          </CalendarRow>
+        </Collapse>
+      </AddToCalendarWrapper>
     </Wrapper>
   )
 }
