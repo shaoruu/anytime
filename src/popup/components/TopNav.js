@@ -35,13 +35,13 @@ const Logo = () => (
       cy="13.3517"
       r="11.1648"
       stroke="url(#paint0_linear)"
-      stroke-width="2.79121"
+      strokeWidth="2.79121"
     />
     <path
       d="M12.5605 7.69946V13.1947L17.2707 16.3348"
       stroke="#C789F2"
-      stroke-width="1.88407"
-      stroke-linecap="round"
+      strokeWidth="1.88407"
+      strokeLinecap="round"
     />
     <defs>
       <linearGradient
@@ -52,8 +52,8 @@ const Logo = () => (
         y2="4.08833"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#1B2378" />
-        <stop offset="1" stop-color="#C789F2" />
+        <stop stopColor="#1B2378" />
+        <stop offset="1" stopColor="#C789F2" />
       </linearGradient>
     </defs>
   </svg>

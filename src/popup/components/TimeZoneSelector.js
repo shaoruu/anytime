@@ -48,7 +48,7 @@ const TimeZoneSelector = ({ storageKey, setTimeZone, shouldEmpty }) => {
       const storage = await getChromeValues([storageKey])
       const valueStorage = storage[storageKey]
 
-      if (valueStorage) {
+      if (valueStorage && valueStorage !== 'null') {
         const actualStorage = JSON.parse(valueStorage)
         setValue(actualStorage)
         setTimeZone(actualStorage.timeZone)
@@ -71,9 +71,9 @@ const TimeZoneSelector = ({ storageKey, setTimeZone, shouldEmpty }) => {
       value={value}
       onChange={(_, newValue) => {
         setValue(newValue);
+        setChromeValue({ [storageKey]: JSON.stringify(newValue) })
 
         if (newValue) {
-          setChromeValue({ [storageKey]: JSON.stringify(newValue) })
           setTimeZone(newValue.timeZone)
         }
         else
