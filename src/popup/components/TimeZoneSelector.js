@@ -37,7 +37,7 @@ const filterOptions = createFilterOptions({
 const defaultTimeZone = timeZoneDict[userTimeZone]
 
 const TimeZoneSelector = ({ setTimeZone, shouldEmpty }) => {
-  const [value, setValue] = useState(shouldEmpty ? {} : defaultTimeZone)
+  const [value, setValue] = useState(shouldEmpty ? null : defaultTimeZone)
   const [inputValue, setInputValue] = useState('')
 
   return (
