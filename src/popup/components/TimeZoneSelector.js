@@ -5,7 +5,8 @@ import Autocomplete, {
 import cityTimeZones from 'city-timezones'
 import { formatToTimeZone } from 'date-fns-timezone'
 import jstz from 'jstz'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { getChromeValues, setChromeValue, shuffle } from '../../utils'
 
 const userTimeZone = jstz.determine().name()
 
@@ -36,9 +37,29 @@ const filterOptions = createFilterOptions({
 
 const defaultTimeZone = timeZoneDict[userTimeZone]
 
-const TimeZoneSelector = ({ setTimeZone, shouldEmpty }) => {
+shuffle(timeZoneLookupsArray)
+
+const TimeZoneSelector = ({ storageKey, setTimeZone, shouldEmpty }) => {
   const [value, setValue] = useState(shouldEmpty ? null : defaultTimeZone)
   const [inputValue, setInputValue] = useState('')
+
+  useEffect(() => {
+    const syncChrome = async () => {
+      const storage = await getChromeValues([storageKey])
+      const valueStorage = storage[storageKey]
+
+      if (valueStorage) {
+        const actualStorage = JSON.parse(valueStorage)
+        setValue(actualStorage)
+        setTimeZone(actualStorage.timeZone)
+      }
+    }
+
+    syncChrome()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
 
   return (
     <Autocomplete
@@ -50,8 +71,11 @@ const TimeZoneSelector = ({ setTimeZone, shouldEmpty }) => {
       value={value}
       onChange={(_, newValue) => {
         setValue(newValue);
-        if (newValue)
+
+        if (newValue) {
+          setChromeValue({ [storageKey]: JSON.stringify(newValue) })
           setTimeZone(newValue.timeZone)
+        }
         else
           setTimeZone(null)
       }}
