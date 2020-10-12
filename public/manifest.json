@@ -2,7 +2,7 @@
 	"name": "AnyTime",
 	"short_name": "AnyTime",
 	"version": "0.0.1",
-	"description": "The most convenient time zone converter on Google Chrome",
+	"description": "The most convenient time zone converter on planet Earth.",
 	"manifest_version": 2,
 	"icons": {
 		"128": "logo.png"
@@ -14,13 +14,6 @@
 	"background": {
 		"scripts": ["/static/js/background.js"]
 	},
-	"content_scripts": [
-		{
-			"matches": ["<all_urls>"],
-			"css": ["/static/css/content.css"],
-			"js": ["/static/js/content.js"]
-		}
-	],
 	"web_accessible_resources": ["/static/css/*.css", "/static/media/*.png"],
-	"permissions": ["storage", "identity", "contextMenus", "notifications", "geolocation"]
+	"permissions": ["storage", "contextMenus", "notifications", "geolocation"]
 }

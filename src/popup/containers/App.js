@@ -7,6 +7,13 @@ const AppWrapper = styled.div`
 	width: 400px;
 	height: 530px;
 	overflow: auto;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `
 
 export default () => {
