@@ -17,7 +17,7 @@ const ConvertTo = () => {
 			<SectionTitle>Convert to</SectionTitle>
 			<SelectorWrapper>
 				<TimeZoneSelector
-					placeholder="Choose Time Zone to Convert to"
+					placeholder="Choose Time Zone / City to Convert to"
 					storageKey="timeZoneTo"
 					setTimeZone={setTimeZoneTo}
 				/>

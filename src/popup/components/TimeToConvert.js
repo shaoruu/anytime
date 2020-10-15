@@ -72,7 +72,7 @@ const TimeToConvert = () => {
 				</MuiPickersUtilsProvider>
 			</FormWrapper>
 			<TimeZoneSelector
-				placeholder="Choose Time Zone to Convert from"
+				placeholder="Choose Time Zone / City to Convert from"
 				storageKey="timeZoneFrom"
 				setTimeZone={setTimeZoneFrom}
 				shouldEmpty
