@@ -7,7 +7,7 @@ import { formatToTimeZone } from 'date-fns-timezone'
 import jstz from 'jstz'
 import React, { useEffect, useState } from 'react'
 import { getChromeValues, setChromeValue, shuffle } from '../../utils'
-import { listTimeZones, findTimeZone } from 'timezone-support'
+import { listTimeZones } from 'timezone-support'
 
 const timeZoneList = listTimeZones()
 const userTimeZone = jstz.determine().name()
