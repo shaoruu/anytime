@@ -1,8 +1,8 @@
 {
 	"name": "AnyTime",
 	"short_name": "AnyTime",
-	"version": "0.0.1",
-	"description": "The most convenient time zone converter on planet Earth.",
+	"version": "0.0.2",
+	"description": "Seamlessly convert time zones and add to your calendar with AnyTime.",
 	"manifest_version": 2,
 	"icons": {
 		"128": "logo.png"
