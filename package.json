@@ -163,6 +163,7 @@
 		"@types/chrome": "^0.0.124",
 		"bestzip": "^2.1.7",
 		"eslint-config-prettier": "^6.12.0",
+		"jsonfile": "^6.0.1",
 		"webpack-chrome-extension-reloader": "^1.3.0",
 		"webpack-extension-reloader": "^1.1.4"
 	}

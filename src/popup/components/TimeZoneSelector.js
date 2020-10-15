@@ -7,7 +7,9 @@ import { formatToTimeZone } from 'date-fns-timezone'
 import jstz from 'jstz'
 import React, { useEffect, useState } from 'react'
 import { getChromeValues, setChromeValue, shuffle } from '../../utils'
+import { listTimeZones, findTimeZone } from 'timezone-support'
 
+const timeZoneList = listTimeZones()
 const userTimeZone = jstz.determine().name()
 
 const { cityMapping } = cityTimeZones
@@ -25,6 +27,21 @@ cityMapping.forEach((timeZone) => {
 				timeZone: timezone
 			})} ${city}, ${country}`
 		})
+})
+
+timeZoneList.forEach((timeZone) => {
+	if (timeZoneLookupsArray.some(({ timeZone: tz }) => tz === timeZone)) return
+
+	try {
+		timeZoneLookupsArray.push({
+			timeZone,
+			lookup: `${formatToTimeZone(temp, format, {
+				timeZone
+			})} ${timeZone}`
+		})
+	} catch (e) {
+		console.log("can't find time zone", timeZone)
+	}
 })
 
 const timeZoneDict = {}

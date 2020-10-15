@@ -81,7 +81,7 @@ const ConvertedTime = ({ theme }) => {
 
 	if (time && timeZoneFrom && timeZoneTo) {
 		const utcDate = parseFromTimeZone(time, { timeZone: timeZoneFrom })
-		const output = formatToTimeZone(utcDate, 'M/D/YYYY HH:mmA dddd', {
+		const output = formatToTimeZone(utcDate, 'MMMM do, YYYY HH:mmA dddd', {
 			timeZone: timeZoneTo
 		})
 		const outputDate = convertToTimeZone(utcDate, {

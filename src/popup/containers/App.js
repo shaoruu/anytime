@@ -5,7 +5,7 @@ import Home from './Home'
 
 const AppWrapper = styled.div`
 	width: 400px;
-	height: 530px;
+	height: 535px;
 	overflow: auto;
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
